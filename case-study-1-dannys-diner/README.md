@@ -6,7 +6,7 @@
   - [Sales Table](#sales-table)
   - [Menu Table](#menu-table)
   - [Members Table](#members-table)
-- [Business Questions][#Business-Question]
+- [Business Questions](#Business-Question)
 - [Approach](#approach)
 
 ---
