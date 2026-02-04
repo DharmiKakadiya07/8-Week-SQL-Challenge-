@@ -51,7 +51,7 @@ select * from Sales;
 select * from members;
 
 
--- Q1: What is the total amount each customer spent at the restaurant??
+-- Q1: What is the total amount each customer spent at the restaurant?
 SELECT customer_id, sum(price) as 'total_spent' FROM sales
 JOIN menu ON menu.product_id = sales.product_id
 GROUP BY customer_id;
@@ -59,8 +59,8 @@ GROUP BY customer_id;
 
 
 -- Q2: How many days has each customer visited the restaurant?
-SELECT customer_id, count(order_date) from sales
-group by Customer_id;
+SELECT customer_id,COUNT(DISTINCT(order_date)) AS 'nr_of_visits' FROM sales
+GROUP BY customer_id;
 
 
 
@@ -91,7 +91,7 @@ from sales as s
 Join menu as m
  On s.product_id = m.product_id
 group by m.product_name
-Order By sales_count desc
+Order By most_purchased desc
 limit 1;
 
 
