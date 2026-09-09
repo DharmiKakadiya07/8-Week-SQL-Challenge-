@@ -23,6 +23,7 @@ FROM customer_orders;
 ``` 
 	
 #### Result set:
+<img width="215" height="70" alt="Screenshot 2026-09-08 195658" src="https://github.com/user-attachments/assets/7e1ac73e-acb1-4a4c-814f-eb9b6a8253b5" />
 
 
 ***
@@ -35,6 +36,7 @@ FROM customer_orders;
 ``` 
 	
 #### Result set:
+<img width="171" height="62" alt="Screenshot 2026-09-08 200202" src="https://github.com/user-attachments/assets/36d391f4-da74-43bf-a09a-fc85fbc97d0d" />
 
 ***
 
@@ -48,6 +50,7 @@ GROUP BY runner_id;
 ``` 
 	
 #### Result set:
+<img width="295" height="100" alt="Screenshot 2026-09-08 200446" src="https://github.com/user-attachments/assets/ffc8e7a5-851c-4acd-8ef4-3b77e2520ac3" />
 
 
 ***
@@ -64,6 +67,7 @@ GROUP BY pn.pizza_name;
 ``` 
 	
 #### Result set:
+<img width="237" height="72" alt="Screenshot 2026-09-08 200537" src="https://github.com/user-attachments/assets/04cb44ca-e120-419e-a87b-9dd1e147d305" />
 
 ***
 
@@ -79,7 +83,7 @@ GROUP BY co.customer_id;
 ``` 
 	
 #### Result set:
-
+<img width="343" height="147" alt="Screenshot 2026-09-08 202537" src="https://github.com/user-attachments/assets/2ece86d2-144d-4250-b1cf-951fcea8ef78" />
 
 ***
 
@@ -97,6 +101,7 @@ FROM (
 ``` 
 	
 #### Result set:
+<img width="228" height="55" alt="Screenshot 2026-09-08 202625" src="https://github.com/user-attachments/assets/6cbae493-f53e-46bb-99d6-6fa31375f1c6" />
 
 
 ***
@@ -115,6 +120,7 @@ GROUP BY co.customer_id;
 ```
 	
 #### Result set:
+<img width="362" height="138" alt="Screenshot 2026-09-08 202752" src="https://github.com/user-attachments/assets/7823b1d1-3c98-4090-9c37-47447c1acfaa" />
 
 
 ***
@@ -131,6 +137,7 @@ AND co.extras != '';
 ```
 
 #### Result Set:
+<img width="242" height="47" alt="Screenshot 2026-09-08 202942" src="https://github.com/user-attachments/assets/0027dcb4-b98a-4a58-96da-6410b82be589" />
 
 
 ***
@@ -145,6 +152,7 @@ GROUP BY HOUR(order_time)
 ORDER BY hour_of_day;
 ```
 ### Result Set:
+<img width="251" height="165" alt="Screenshot 2026-09-08 203030" src="https://github.com/user-attachments/assets/8779a9b1-ca74-4d67-9208-b5a53676dc9f" />
 
 
 ***
@@ -160,6 +168,7 @@ ORDER BY DAYOFWEEK(order_time);
 ```
 
 ### Result Set:
+<img width="255" height="120" alt="Screenshot 2026-09-08 203153" src="https://github.com/user-attachments/assets/f7a8379e-a34c-4216-8646-6372b5d2a6f7" />
 
 
 ***
