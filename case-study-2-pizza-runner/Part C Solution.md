@@ -30,8 +30,7 @@ GROUP BY pn.pizza_name;
 ``` 
 	
 #### Result set:
-
-
+<img width="292" height="92" alt="Screenshot 2026-09-10 164905" src="https://github.com/user-attachments/assets/2083ab97-9ae2-4866-ab63-5262a4806364" />
 
 ***
 
@@ -49,7 +48,7 @@ LIMIT 1;
 ``` 
 	
 #### Result set:
-
+<img width="265" height="57" alt="Screenshot 2026-09-10 164921" src="https://github.com/user-attachments/assets/5e8ba11b-5cb9-4fe6-a286-3d63c962e71a" />
 
 ***
 
@@ -67,7 +66,7 @@ LIMIT 1;
 ``` 
 	
 #### Result set:
-
+<img width="262" height="61" alt="Screenshot 2026-09-10 164928" src="https://github.com/user-attachments/assets/cf8968d4-a826-43bd-8977-c27200820d91" />
 
 
 ***
@@ -109,7 +108,7 @@ ORDER BY co.order_id;
 ``` 
 	
 #### Result set:
-
+<img width="482" height="331" alt="Screenshot 2026-09-10 165001" src="https://github.com/user-attachments/assets/4c164e07-3704-418c-ad14-571efd04c36c" />
 
 
 ***
@@ -140,6 +139,8 @@ ORDER BY co.order_id;
 ```
 	
 #### Result set:
+<img width="432" height="272" alt="Screenshot 2026-09-10 165016" src="https://github.com/user-attachments/assets/263ed689-5e32-4d6a-a978-3b2183fa043e" />
+
 
 ***
 
@@ -164,5 +165,6 @@ ORDER BY total_quantity DESC;
 ``` 
 	
 #### Result set:
+<img width="260" height="97" alt="Screenshot 2026-09-10 165025" src="https://github.com/user-attachments/assets/e9641f5b-c366-46d4-b56a-e3952827e55d" />
 
 ***
