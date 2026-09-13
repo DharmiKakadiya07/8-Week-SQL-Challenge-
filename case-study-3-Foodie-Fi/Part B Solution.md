@@ -1,4 +1,4 @@
-# :avocado: Case Study #3: Foodie-Fi - Data Analysis Questions
+# Part B: Foodie-Fi - Data Analysis Questions
 
 ## Case Study Questions
 1. How many customers has Foodie-Fi ever had?
@@ -22,6 +22,7 @@ FROM subscriptions;
 ``` 
 
 #### Result set:
+<img width="157" height="55" alt="Screenshot 2026-09-13 153611" src="https://github.com/user-attachments/assets/1cf6d261-603c-4b0b-a158-0e7756e3acc3" />
 
 
 ***
@@ -40,6 +41,7 @@ ORDER BY month_number;
 ``` 
 	
 #### Result set:
+<img width="390" height="293" alt="Screenshot 2026-09-13 154526" src="https://github.com/user-attachments/assets/a070fd48-d62a-4a3c-84c7-86d420a3741b" />
 
 
 ***
@@ -58,6 +60,8 @@ ORDER BY p.plan_id;
 ``` 
 	
 #### Result set:
+<img width="287" height="131" alt="Screenshot 2026-09-13 154541" src="https://github.com/user-attachments/assets/6a14b0bf-c27e-42b1-a615-a0d6948a1b9a" />
+
 
 
 ***
@@ -75,6 +79,7 @@ WHERE plan_id = 4;
 ``` 
 	
 #### Result set:
+<img width="317" height="55" alt="Screenshot 2026-09-13 154601" src="https://github.com/user-attachments/assets/131b2c12-8780-4af6-bd41-fd248fc42e14" />
 
 
 ***
@@ -100,6 +105,7 @@ FROM trial_then_churn;
 ``` 
 	
 #### Result set:
+<img width="275" height="57" alt="Screenshot 2026-09-13 154722" src="https://github.com/user-attachments/assets/4ca981b0-a18c-4a08-8384-ecd39565df3c" />
 
 
 ***
@@ -129,6 +135,7 @@ ORDER BY np.plan_id;
 ``` 
 	
 #### Result set:
+<img width="347" height="127" alt="Screenshot 2026-09-13 155240" src="https://github.com/user-attachments/assets/055b6c82-3a2e-4052-854d-2860c0894ab5" />
 
 
 ***
@@ -163,6 +170,7 @@ ORDER BY lp.plan_id;
 ``` 
 	
 #### Result set:
+<img width="356" height="140" alt="Screenshot 2026-09-13 155348" src="https://github.com/user-attachments/assets/6e934866-7cd3-467d-a6c5-a7b54965e86b" />
 
 
 ***
@@ -178,6 +186,7 @@ AND YEAR(start_date) = 2020;
 ``` 
 	
 #### Result set:
+<img width="162" height="45" alt="Screenshot 2026-09-13 155547" src="https://github.com/user-attachments/assets/df719584-ad88-4e74-a6f8-b083ccbea591" />
 
   
 ***
@@ -206,6 +215,7 @@ JOIN annual_start a ON t.customer_id = a.customer_id;
 ``` 
 
 #### Result set:
+<img width="215" height="81" alt="Screenshot 2026-09-13 155903" src="https://github.com/user-attachments/assets/0176e8d8-083a-41d0-8e5f-0d28be3aa5c6" />
 
 
 ***
@@ -243,6 +253,7 @@ FROM plan_changes;
 ``` 
 	
 #### Result set:
+<img width="161" height="77" alt="Screenshot 2026-09-13 161830" src="https://github.com/user-attachments/assets/f0bc839c-b3d6-4f49-b724-dfb167138abe" />
 
 
 ***
