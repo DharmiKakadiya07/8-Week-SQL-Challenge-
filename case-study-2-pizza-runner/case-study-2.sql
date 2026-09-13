@@ -393,27 +393,21 @@ WHERE ro.cancellation = '';
 -- Q3: The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
 -- Ratings between 1-5 for each successful delivery
 
-CREATE TABLE runner_ratings (
-    rating_id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    runner_id INT NOT NULL,
-    customer_id INT NOT NULL,
-    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
-    rating_comment VARCHAR(255),
-    rated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+DROP TABLE IF EXISTS runner_rating;
+CREATE TABLE runner_rating (order_id INTEGER, rating INTEGER) ;
 
--- Inserting realistic ratings for each successful delivery
-INSERT INTO runner_ratings (order_id, runner_id, customer_id, rating, rating_comment)
-VALUES
-    (1,  1, 101, 5, 'Super fast delivery!'),
-    (2,  1, 101, 4, 'Great service'),
-    (3,  1, 102, 3, 'A little late but friendly'),
-    (4,  2, 103, 1, 'Very late delivery, pizza was cold'),
-    (5,  3, 104, 5, 'Perfect delivery!'),
-    (7,  2, 105, 4, 'Good service'),
-    (8,  2, 102, 4, 'Quick and efficient'),
-    (10, 1, 104, 5, 'Excellent as always!');
+-- Order 6 and 9 were cancelled
+INSERT INTO runner_rating
+VALUES ('1', '1'),
+       ('2', '1'),
+       ('3', '4'),
+       ('4', '1'),
+       ('5', '2'),
+       ('7', '5'),
+       ('8', '2'),
+       ('10', '5');
+       
+SELECT * FROM runner_rating;
 
 -- Q4: Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
 -- customer_id
@@ -426,4 +420,47 @@ VALUES
 -- Delivery duration
 -- Average speed
 -- Total number of pizzas
+
+SELECT 
+    co.customer_id,
+    co.order_id,
+    ro.runner_id,
+    rr.rating,
+    co.order_time,
+    ro.pickup_time,
+    ROUND(TIMESTAMPDIFF(MINUTE, co.order_time, ro.pickup_time)) AS time_to_pickup_mins,
+    ro.duration AS delivery_duration_mins,
+    ROUND(ro.distance / (ro.duration / 60), 1) AS avg_speed_kmh,
+    COUNT(co.pizza_id) AS total_pizzas
+FROM customer_orders co
+JOIN runner_orders ro ON co.order_id = ro.order_id
+JOIN runner_ratings rr ON co.order_id = rr.order_id
+WHERE ro.cancellation = ''
+GROUP BY 
+    co.customer_id,
+    co.order_id,
+    ro.runner_id,
+    rr.rating,
+    co.order_time,
+    ro.pickup_time,
+    ro.duration,
+    ro.distance
+ORDER BY co.order_id;
+
+-- Q5: If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+SELECT 
+    ROUND(
+        SUM(
+            CASE WHEN pn.pizza_name = 'Meatlovers' THEN 12
+                 WHEN pn.pizza_name = 'Vegetarian' THEN 10
+                 ELSE 0
+            END
+        ) - SUM(DISTINCT ro.distance * 0.30)
+    , 2) AS profit_after_runner_payments
+FROM customer_orders co
+JOIN pizza_names pn ON co.pizza_id = pn.pizza_id
+JOIN runner_orders ro ON co.order_id = ro.order_id
+WHERE ro.cancellation = '';
+
+
 
