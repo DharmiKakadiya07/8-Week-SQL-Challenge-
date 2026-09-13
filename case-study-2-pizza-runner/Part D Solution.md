@@ -114,7 +114,31 @@ VALUES
 - Total number of pizzas
 
 ```sql
-
+SELECT 
+    co.customer_id,
+    co.order_id,
+    ro.runner_id,
+    rr.rating,
+    co.order_time,
+    ro.pickup_time,
+    ROUND(TIMESTAMPDIFF(MINUTE, co.order_time, ro.pickup_time)) AS time_to_pickup_mins,
+    ro.duration AS delivery_duration_mins,
+    ROUND(ro.distance / (ro.duration / 60), 1) AS avg_speed_kmh,
+    COUNT(co.pizza_id) AS total_pizzas
+FROM customer_orders co
+JOIN runner_orders ro ON co.order_id = ro.order_id
+JOIN runner_ratings rr ON co.order_id = rr.order_id
+WHERE ro.cancellation = ''
+GROUP BY 
+    co.customer_id,
+    co.order_id,
+    ro.runner_id,
+    rr.rating,
+    co.order_time,
+    ro.pickup_time,
+    ro.duration,
+    ro.distance
+ORDER BY co.order_id;
 ``` 
 	
 #### Result set:
@@ -125,7 +149,20 @@ VALUES
 ###  5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
 
 ```sql
- 
+SELECT 
+    ROUND(
+        SUM(
+            CASE WHEN pn.pizza_name = 'Meatlovers' THEN 12
+                 WHEN pn.pizza_name = 'Vegetarian' THEN 10
+                 ELSE 0
+            END
+        ) - SUM(DISTINCT ro.distance * 0.30)
+    , 2) AS profit_after_runner_payments
+FROM customer_orders co
+JOIN pizza_names pn ON co.pizza_id = pn.pizza_id
+JOIN runner_orders ro ON co.order_id = ro.order_id
+WHERE ro.cancellation = '';
+
 ``` 
 	
 #### Result set:
