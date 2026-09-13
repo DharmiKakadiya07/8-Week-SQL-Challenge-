@@ -35,7 +35,7 @@ WHERE ro.cancellation = '';
 ``` 
 	
 #### Result set:
-
+<img width="145" height="50" alt="Screenshot 2026-09-13 132855" src="https://github.com/user-attachments/assets/b1651c1b-71f3-4eb1-946b-73123eba27aa" />
 
 ***
 
@@ -62,40 +62,32 @@ WHERE ro.cancellation = '';
 ``` 
 	
 #### Result set:
-
-
+<img width="172" height="47" alt="Screenshot 2026-09-13 132928" src="https://github.com/user-attachments/assets/0cf3c628-4576-4995-beaa-b353eb069149" />
 
 ***
 
 ###  3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
 
 ```sql
-CREATE TABLE runner_ratings (
-    rating_id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    runner_id INT NOT NULL,
-    customer_id INT NOT NULL,
-    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
-    rating_comment VARCHAR(255),
-    rated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+DROP TABLE IF EXISTS runner_rating;
+CREATE TABLE runner_rating (order_id INTEGER, rating INTEGER) ;
 
--- Inserting realistic ratings for each successful delivery
-INSERT INTO runner_ratings (order_id, runner_id, customer_id, rating, rating_comment)
-VALUES
-    (1,  1, 101, 5, 'Super fast delivery!'),
-    (2,  1, 101, 4, 'Great service'),
-    (3,  1, 102, 3, 'A little late but friendly'),
-    (4,  2, 103, 1, 'Very late delivery, pizza was cold'),
-    (5,  3, 104, 5, 'Perfect delivery!'),
-    (7,  2, 105, 4, 'Good service'),
-    (8,  2, 102, 4, 'Quick and efficient'),
-    (10, 1, 104, 5, 'Excellent as always!');
-
+-- Order 6 and 9 were cancelled
+INSERT INTO runner_rating
+VALUES ('1', '1'),
+       ('2', '1'),
+       ('3', '4'),
+       ('4', '1'),
+       ('5', '2'),
+       ('7', '5'),
+       ('8', '2'),
+       ('10', '5');
+       
+SELECT * FROM runner_rating;
 ``` 
 	
 #### Result set:
-
+<img width="157" height="197" alt="Screenshot 2026-09-13 132727" src="https://github.com/user-attachments/assets/72042aba-0ee8-435a-ba13-91da6916a42b" />
 
 
 ***
@@ -142,7 +134,7 @@ ORDER BY co.order_id;
 ``` 
 	
 #### Result set:
-
+<img width="1170" height="226" alt="Screenshot 2026-09-13 131629" src="https://github.com/user-attachments/assets/d8275c7c-ff91-4b3e-b5a9-afab85d5c260" />
 
 ***
 
@@ -166,6 +158,7 @@ WHERE ro.cancellation = '';
 ``` 
 	
 #### Result set:
+<img width="255" height="60" alt="Screenshot 2026-09-13 131757" src="https://github.com/user-attachments/assets/2d870101-6095-4c94-a571-0bea73459aef" />
 
 ***
 
